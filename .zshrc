@@ -45,7 +45,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby bundler rbenv)
+plugins=(git ruby bundler rbenv kubectl kube-ps1)
 
 # User configuration
 
@@ -81,6 +81,17 @@ alias gpl="ggpull"
 alias gps="ggpush"
 alias grw="./gradlew "
 alias ber="bundle exec rake"
+alias code="codium"
+alias dc="docker-compose"
+alias git="nocorrect git"
+alias kd="kubectl describe"
+
+# kubectl prompt config
+PROMPT='$(kube_ps1)'$PROMPT
+KUBE_PS1_SYMBOL_ENABLE=false
+
+# kubectl autocompletion
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
